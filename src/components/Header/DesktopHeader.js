@@ -45,23 +45,35 @@ const DesktopHeader = ({ currencies, languages }) => {
         alignItems: "center",
         justifyContent: "space-between",
         margin: 0,
-        paddingLeft: "2.5rem",
-        paddingRight: "2.5rem",
-        backgroundColor: "primary.main",
+        p: ".5rem 2.5rem",
+
+        backgroundColor: theme.palette.background,
       }}>
-      <Link to='/'>
+      <Link
+        to='/'
+        style={{
+          display: "flex",
+          alignItems: "center",
+          textDecoration: "none",
+          color: theme.palette.text.primary,
+          fontWeight: "700",
+        }}>
         <img
           style={{ width: "4rem" }}
           src={QuickworksLogo}
           alt='Quickworks Logo'
         />
+        QUICKWORKS
       </Link>
       <Box sx={{ ml: "auto" }}>
         <Button
+          disableRipple
+          disableFocusRipple
+          disableTouchRipple
           onClick={languageHandleClick}
           variant='text'
           sx={{
-            color: theme.palette.common.white,
+            color: theme.palette.text.secondary,
             textTransform: "capitalize",
             fontWeight: 600,
           }}>
@@ -69,10 +81,13 @@ const DesktopHeader = ({ currencies, languages }) => {
           {language}
         </Button>
         <Button
+          disableRipple
+          disableFocusRipple
+          disableTouchRipple
           onClick={currencyHandleClick}
           variant='text'
           sx={{
-            color: theme.palette.common.white,
+            color: theme.palette.text.secondary,
             textTransform: "capitalize",
             fontWeight: 600,
           }}>
@@ -81,7 +96,7 @@ const DesktopHeader = ({ currencies, languages }) => {
         <Button
           variant='text'
           sx={{
-            color: theme.palette.secondary.main,
+            color: theme.palette.text.secondary,
             textTransform: "capitalize",
             fontWeight: 700,
           }}>
@@ -90,21 +105,28 @@ const DesktopHeader = ({ currencies, languages }) => {
         <Button
           variant='text'
           sx={{
-            color: theme.palette.common.white,
+            color: theme.palette.text.secondary,
             textTransform: "capitalize",
+            fontWeight: "700",
           }}>
           Sign In
         </Button>
         <Button
           size='small'
+          disableElevation
+          disableRipple
+          disableFocusRipple
+          disableTouchRipple
           sx={{
             border: 1,
-            borderColor: theme.palette.secondary.main,
-            color: theme.palette.secondary.main,
+            borderColor: theme.palette.primary.main,
+            color: theme.palette.primary.main,
+            ml: ".5rem",
+            fontWeight: "700",
             background: "none",
             "&:hover": {
-              background: theme.palette.secondary.main,
-              color: theme.palette.primary.main,
+              background: theme.palette.primary.main,
+              color: theme.palette.common.white,
             },
           }}
           variant='contained'

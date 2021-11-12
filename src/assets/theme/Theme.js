@@ -1,44 +1,203 @@
-import {
-  createTheme,
-  ThemeProvider,
-  responsiveFontSizes,
-} from "@mui/material/styles";
-import React from "react";
+import { amber, deepOrange, deepPurple, grey } from "@mui/material/colors";
 
-const theme = createTheme({
+const getDesignTokens = (mode) => ({
   palette: {
-    primary: {
-      main: "#424242",
-    },
-    secondary: {
-      main: "#FCD736",
-    },
-    neutral: {
-      white: "#fff",
-      blackLight: "#666",
-      black01: "#333",
-      black02: "#444",
-      black03: "#555",
-      gray: "#999",
-      gray01: "#ccc",
-      gray02: "#e5e5e5",
-      gray03: "#ddd",
-      ofWhite: "#f0f0f0",
-      blue: "#00698C",
-    },
-    shadow: {
-      shadow01: "1px 1px 3px 1px rgba(0,0,0,0.1)",
-    },
-    common: {
-      radius: "2px",
-    },
+    mode,
+    ...(mode === "light"
+      ? {
+          primary: {
+            main: "#FFDE00",
+          },
+          text: {
+            primary: "#231E03",
+            secondary: "#424242",
+            tertiary: "#333333",
+            disabled: "rgba(0, 0, 0, 0.38)",
+          },
+          shadow: {
+            shadow01: "1px 1px 3px 1px rgba(0,0,0,0.1)",
+          },
+          neutral: {
+            white: "#fff",
+            blackLight: "#666",
+            black01: "#333",
+            black02: "#444",
+            black03: "#555",
+            gray: "#999",
+            gray01: "#ccc",
+            gray02: "#e5e5e5",
+            gray03: "#ddd",
+            ofWhite: "#f0f0f0",
+            blue: "#00698C",
+          },
+          common: {
+            black: "#000",
+            white: "#fff",
+          },
+          secondary: {
+            main: "#231F20",
+          },
+          error: {
+            main: "#d32f2f",
+            light: "#ef5350",
+            dark: "#c62828",
+            contrastText: "#fff",
+          },
+          warning: {
+            main: "#ED6C02",
+            light: "#ff9800",
+            dark: "#e65100",
+            contrastText: "#fff",
+          },
+          info: {
+            main: "#0288d1",
+            light: "#03a9f4",
+            dark: "#01579b",
+            contrastText: "#fff",
+          },
+          success: {
+            main: "#2e7d32",
+            light: "#4caf50",
+            dark: "#1b5e20",
+            contrastText: "#fff",
+          },
+          grey: {
+            50: "#fafafa",
+            100: "#cccccc",
+            200: "#eeeeee",
+            300: "#e0e0e0",
+            400: "#999999",
+            500: "#9e9e9e",
+            600: "#757575",
+            700: "#616161",
+            800: "#424242",
+            900: "#212121",
+            A100: "#f5f5f5",
+            A200: "#eeeeee",
+            A400: "#bdbdbd",
+            A700: "#616161",
+          },
+          contrastThreshold: 3,
+          tonalOffset: 0.2,
+          divider: "rgba(0, 0, 0, 0.12)",
+          background: {
+            paper: "#fff",
+            default: "#fff",
+          },
+          action: {
+            active: "rgba(0, 0, 0, 0.54)",
+            hover: "rgba(0, 0, 0, 0.04)",
+            hoverOpacity: 0.04,
+            selected: "rgba(0, 0, 0, 0.08)",
+            selectedOpacity: 0.08,
+            disabled: "rgba(0, 0, 0, 0.26)",
+            disabledBackground: "rgba(0, 0, 0, 0.12)",
+            disabledOpacity: 0.38,
+            focus: "rgba(0, 0, 0, 0.12)",
+            focusOpacity: 0.12,
+            activatedOpacity: 0.12,
+          },
+        }
+      : {
+          primary: {
+            main: "#FFDE00",
+          },
+          divider: "rgba(255, 255, 255, 0.5)",
+          background: {
+            default: "#231F20",
+
+            paper: "#231F20",
+          },
+          text: {
+            primary: "#fff",
+            secondary: "#f0f0f0",
+            tertiary: "#DDDDDD",
+            disabled: "rgba(255, 255, 255, 0.5)",
+            icon: "rgba(255, 255, 255, 0.5)",
+          },
+          shadow: {
+            shadow01: "0px 0px 5px 1px rgba(255,255,255,0.3)",
+          },
+          neutral: {
+            white: "#fff",
+            blackLight: "#666",
+            black01: "#333",
+            black02: "#444",
+            black03: "#555",
+            gray: "#999",
+            gray01: "#ccc",
+            gray02: "#e5e5e5",
+            gray03: "#ddd",
+            ofWhite: "#f0f0f0",
+            blue: "#00698C",
+          },
+          common: {
+            black: "#000",
+            white: "#fff",
+          },
+          secondary: {
+            main: "#ce93d8",
+            light: "#f3e5f5",
+            dark: "#ab47bc",
+            contrastText: "rgba(0, 0, 0, 0.87)",
+          },
+          error: {
+            main: "#f44336",
+            light: "#e57373",
+            dark: "#d32f2f",
+            contrastText: "#fff",
+          },
+          warning: {
+            main: "#ffa726",
+            light: "#ffb74d",
+            dark: "#f57c00",
+            contrastText: "rgba(0, 0, 0, 0.87)",
+          },
+          info: {
+            main: "#29b6f6",
+            light: "#4fc3f7",
+            dark: "#0288d1",
+            contrastText: "rgba(0, 0, 0, 0.87)",
+          },
+          success: {
+            main: "#66bb6a",
+            light: "#81c784",
+            dark: "#388e3c",
+            contrastText: "rgba(0, 0, 0, 0.87)",
+          },
+          grey: {
+            50: "#fafafa",
+            100: "#f5f5f5",
+            200: "#eeeeee",
+            300: "#e0e0e0",
+            400: "#bdbdbd",
+            500: "#9e9e9e",
+            600: "#757575",
+            700: "#616161",
+            800: "#424242",
+            900: "#212121",
+            A100: "#f5f5f5",
+            A200: "#eeeeee",
+            A400: "#bdbdbd",
+            A700: "#616161",
+          },
+          contrastThreshold: 3,
+          tonalOffset: 0.2,
+          action: {
+            active: "#fff",
+            hover: "rgba(255, 255, 255, 0.08)",
+            hoverOpacity: 0.08,
+            selected: "rgba(255, 255, 255, 0.16)",
+            selectedOpacity: 0.16,
+            disabled: "rgba(255, 255, 255, 0.3)",
+            disabledBackground: "rgba(255, 255, 255, 0.12)",
+            disabledOpacity: 0.38,
+            focus: "rgba(255, 255, 255, 0.12)",
+            focusOpacity: 0.12,
+            activatedOpacity: 0.24,
+          },
+        }),
   },
 });
 
-responsiveFontSizes(theme);
-
-const Theme = (props) => {
-  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
-};
-
-export default Theme;
+export default getDesignTokens;

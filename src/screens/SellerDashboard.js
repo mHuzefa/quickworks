@@ -1,12 +1,24 @@
 import { useTheme } from "@emotion/react";
-import { Star } from "@mui/icons-material";
-import { Divider } from "@mui/material";
+import { ExpandLess, ExpandMore, Star } from "@mui/icons-material";
+import { Avatar, Button, Divider, MenuItem, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import StyledMenu from "../components/StyledMenu";
 import Avataaar from "./../assets/images/avataaars.png";
 const SellerDashboard = () => {
   const theme = useTheme();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [clicked, setClicked] = useState(false);
+  const open = Boolean(anchorEl);
+  const activeMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+    setClicked(!clicked);
+  };
+  const activeMenuClose = () => {
+    setAnchorEl(null);
+    setClicked(!clicked);
+  };
   return (
     <Box
       sx={{
@@ -28,8 +40,8 @@ const SellerDashboard = () => {
         <Box
           sx={{
             width: "100%",
-            background: theme.palette.common.white,
-            boxShadow: "1px 1px 3px 1px rgba(0,0,0,0.1)",
+            background: theme.palette.background.default,
+            boxShadow: theme.palette.shadow.shadow01,
             padding: "1.5rem",
             pb: "5px",
             display: "flex",
@@ -51,7 +63,7 @@ const SellerDashboard = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                color: "#666",
+                color: theme.palette.text.primary,
                 mb: "1rem",
               }}>
               <Box
@@ -80,9 +92,17 @@ const SellerDashboard = () => {
               </Box>
 
               <Box id='rating' sx={{ display: "flex", alignItems: "center" }}>
-                <Star sx={{ color: theme.palette.secondary.main }} />
+                <Star
+                  sx={{ color: theme.palette.primary.main, fontSize: "1.1rem" }}
+                />
 
-                <span>5</span>
+                <span
+                  style={{
+                    color: theme.palette.primary.main,
+                    fontWeight: "500",
+                  }}>
+                  5
+                </span>
               </Box>
             </Box>
             <Divider />
@@ -96,7 +116,11 @@ const SellerDashboard = () => {
           </Box>
           <Divider />
           <Box sx={{ mt: "1rem" }}>
-            <Analytics name='Earned in October' info='$770' color='#666' />
+            <Analytics
+              name='Earned in October'
+              info='$770'
+              color={theme.palette.text.primary}
+            />
           </Box>
         </Box>
         <Box
@@ -105,8 +129,8 @@ const SellerDashboard = () => {
             width: "100%",
             padding: "1.5rem",
 
-            background: theme.palette.common.white,
-            boxShadow: "1px 1px 3px 1px rgba(0,0,0,0.1)",
+            background: theme.palette.background.default,
+            boxShadow: theme.palette.shadow.shadow01,
           }}>
           <Box
             sx={{
@@ -115,7 +139,10 @@ const SellerDashboard = () => {
               justifyContent: "space-between",
               mb: "1rem",
             }}>
-            <span>Inbox</span>
+            <span
+              style={{ color: theme.palette.text.primary, fontWeight: "500" }}>
+              Inbox
+            </span>
             <Link
               to=''
               style={{
@@ -152,23 +179,112 @@ const SellerDashboard = () => {
         }}>
         <Box
           sx={{
-            background: "#fff",
-            boxShadow: "1px 1px 3px 1px rgba(0,0,0,0.1)",
-            padding: "1.5rem",
+            background: theme.palette.background.default,
+            boxShadow: theme.palette.shadow.shadow01,
+            padding: "1rem 1.5rem",
             display: "flex",
+            mb: "2rem",
+            alignItems: "center",
             justifyContent: "space-between",
           }}>
           <span
             style={{
               fontSize: "1.2rem",
               fontWeight: "700",
-              color: theme.palette.primary.main,
+              color: theme.palette.text.primary,
             }}>
             Active Orders
           </span>
-          <span>Orders</span>
+          <Button
+            disableElevation
+            disableRipple
+            disableFocusRipple
+            disableTouchRipple
+            sx={{
+              border: `1px solid ${theme.palette.text.primary}`,
+              color: theme.palette.text.primary,
+              p: ".5rem",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "240px",
+            }}
+            onClick={activeMenuOpen}>
+            Active Orders
+            {clicked ? <ExpandLess /> : <ExpandMore />}
+          </Button>
+          <StyledMenu anchorEl={anchorEl} open={open} onClose={activeMenuClose}>
+            <MenuItem onClick={activeMenuClose}>Active Orders</MenuItem>
+            <Divider />
+            <MenuItem onClick={activeMenuClose}>Completed</MenuItem>
+            <MenuItem onClick={activeMenuClose}>Cancelled</MenuItem>
+          </StyledMenu>
         </Box>
-        <Box></Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            p: "1.5rem 1rem",
+            boxShadow: theme.palette.shadow.shadow01,
+          }}>
+          <Box>
+            <Box
+              component='img'
+              sx={{ width: "5rem" }}
+              src='https://fiverr-res.cloudinary.com/t_medium5,q_auto,f_auto/gigs/219368561/original/f199ef71323c3d4cbf2342aada1cf142a5e37b97.png'></Box>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Avatar>H</Avatar>
+            <Typography
+              sx={{
+                color: theme.palette.text.secondary,
+                fontWeight: "500",
+                ml: "1rem",
+              }}
+              variant='b'>
+              HalenKumar
+            </Typography>
+          </Box>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Box
+              component='span'
+              sx={{ color: theme.palette.grey[400], mb: "4px" }}>
+              Price
+            </Box>
+            <Box
+              component='span'
+              sx={{ color: theme.palette.text.secondary, fontWeight: "500" }}>
+              $55
+            </Box>
+          </Box>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Box
+              component='span'
+              sx={{ color: theme.palette.grey[400], mb: "4px" }}>
+              Status
+            </Box>
+            <Box
+              component='span'
+              sx={{
+                fontSize: "10px",
+                fontWeight: "600",
+                color: theme.palette.background.default,
+                background: theme.palette.grey[400],
+                p: "3px 6px",
+                borderRadius: "2rem",
+              }}>
+              COMPLETED
+            </Box>
+          </Box>
+          <Box>
+            <Button
+              disableRipple
+              sx={{ fontWeight: "700", "&:hover": { background: "none" } }}>
+              View
+            </Button>
+          </Box>
+        </Box>
         <Box></Box>
       </Box>
     </Box>
@@ -189,19 +305,19 @@ const Analytics = ({ name, info, color }) => {
       }}>
       <span
         style={{
-          fontWeight: "700",
+          fontWeight: "500",
           width: { lg: "0rem", md: "20rem" },
           fontSize: "1rem",
-          color: "#777",
+          color: theme.palette.text.tertiary,
         }}>
         {name}
       </span>
       <span
         style={{
-          fontWeight: "800",
+          fontWeight: "600",
           fontSize: "1rem",
           marginLeft: "auto",
-          color: color ? color : theme.palette.secondary.main,
+          color: color ? color : theme.palette.primary.main,
         }}>
         {info}
       </span>
@@ -210,6 +326,7 @@ const Analytics = ({ name, info, color }) => {
 };
 
 const Chat = () => {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -238,13 +355,15 @@ const Chat = () => {
         }}>
         <span
           style={{
-            color: "#666",
+            color: theme.palette.text.tertiary,
             fontWeight: "700",
             marginBottom: "5px",
           }}>
           James Bond
         </span>
-        <span style={{ color: "#888" }}>Thank you for helping. </span>
+        <span style={{ color: theme.palette.grey[400] }}>
+          Thank you for helping.{" "}
+        </span>
       </Box>
       <Box
         sx={{

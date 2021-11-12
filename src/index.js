@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import Theme from "./assets/theme/Theme";
 import App from "./App";
 import "./assets/styles/root.css";
+import ThemeContext, { ThemeChangeContext } from "./context/ThemeContext";
+
 ReactDOM.render(
   <React.StrictMode>
-    <Theme>
+    <ThemeContext>
       <App />
-    </Theme>
+    </ThemeContext>
   </React.StrictMode>,
   document.getElementById("root")
 );
