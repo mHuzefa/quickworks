@@ -83,13 +83,20 @@ const PostBuyerRequest = () => {
   };
   const theme = useTheme();
   return (
-    <Box sx={{ ml: "2.5rem", mr: "2.5rem", mb: "6rem", position: "relative" }}>
+    <Box
+      sx={{
+        ml: "2.5rem",
+        mr: "2.5rem",
+        mb: "6rem",
+        position: "relative",
+        fontFamily: "inherit",
+      }}>
       <Typography
         variant='h2'
         sx={{
           fontSize: "1.7rem",
           fontWeight: "700",
-          color: theme.palette.primary.main,
+          color: theme.palette.text.primary,
           mt: "2rem",
         }}>
         What services are you looking for?
@@ -104,7 +111,7 @@ const PostBuyerRequest = () => {
         }}>
         <Box sx={{ padding: "2rem 1.5rem" }}>
           <Typography
-            sx={{ color: theme.palette.neutral.black02, fontWeight: "700" }}>
+            sx={{ color: theme.palette.text.secondary, fontWeight: "600" }}>
             Describe the service you're looking to purchase - please be as
             detailed as possible:
           </Typography>
@@ -112,14 +119,17 @@ const PostBuyerRequest = () => {
             elevation={0}
             sx={{
               mt: "1rem",
-              border: `1px solid ${theme.palette.neutral.gray03}`,
-              borderRadius: "0px",
+              border: `1px solid ${theme.palette.grey[400]}`,
+              borderRadius: "1px",
               width: "100%",
             }}>
             <TextareaAutosize
               style={{
                 width: "99%",
                 outline: "none",
+                background: theme.palette.background.default,
+                color: theme.palette.text.primary,
+                fontFamily: "Inter",
                 border: "none",
                 resize: "none",
               }}
@@ -164,7 +174,7 @@ const PostBuyerRequest = () => {
                   padding: "8px 10px",
                   mt: "1rem",
                   "&:hover": {
-                    background: theme.palette.neutral.gray01,
+                    background: theme.palette.grey[100],
                   },
                 }}>
                 Attach Files
@@ -175,20 +185,18 @@ const PostBuyerRequest = () => {
               style={{
                 display: fileCount.display,
                 fontSize: "1rem",
-                color: theme.palette.neutral.black03,
+                color: theme.palette.text.tertiary,
                 fontWeight: "700",
               }}>
               {fileCount.file} attachments
             </span>
           </Box>
         </Box>
-        <Divider
-          sx={{ border: `.4px solid ${theme.palette.neutral.ofWhite}` }}
-        />
+        <Divider />
         <Box sx={{ padding: "2rem 1.5rem" }}>
           <Typography
             sx={{
-              color: theme.palette.neutral.black02,
+              color: theme.palette.text.secondary,
               fontWeight: "700",
               mb: "10px",
             }}>
@@ -208,6 +216,8 @@ const PostBuyerRequest = () => {
               {categories.map((category, index) => {
                 return (
                   <MenuItem
+                    disableRipple
+                    disableTouchRipple
                     onClick={() => {
                       setCategoryIndex(category.id);
                       setAnchorCategory(null);
@@ -240,36 +250,63 @@ const PostBuyerRequest = () => {
             )}
           </Box>
         </Box>
-        <Divider
-          sx={{ border: `.4px solid ${theme.palette.neutral.ofWhite}` }}
-        />
+        <Divider />
         <Box sx={{ padding: "1rem 1.5rem" }}>
           <Typography
             sx={{
-              color: theme.palette.neutral.black02,
+              color: theme.palette.text.secondary,
               fontWeight: "700",
               mb: "10px",
             }}>
             Once you place your order, when would you like your service
             delivered?
           </Typography>
-          <ButtonGroup style={{ marginTop: "1.5rem" }}>
-            <Button sx={{ fontWeight: "700" }}>24 Hours</Button>
-            <Button sx={{ fontWeight: "700" }}>7 Days</Button>
-            <Button sx={{ fontWeight: "700" }}>14 Days</Button>
-            <Button sx={{ fontWeight: "700" }}>
+          <ButtonGroup
+            style={{
+              marginTop: "1.5rem",
+              color: theme.palette.text.tertiary,
+              borderColor: theme.palette.text.tertiary,
+            }}>
+            <Button
+              sx={{
+                fontWeight: "700",
+                color: theme.palette.text.tertiary,
+                borderColor: theme.palette.text.tertiary,
+              }}>
+              24 Hours
+            </Button>
+            <Button
+              sx={{
+                fontWeight: "700",
+                color: theme.palette.text.tertiary,
+                borderColor: theme.palette.text.tertiary,
+              }}>
+              7 Days
+            </Button>
+            <Button
+              sx={{
+                fontWeight: "700",
+                color: theme.palette.text.tertiary,
+                borderColor: theme.palette.text.tertiary,
+              }}>
+              14 Days
+            </Button>
+            <Button
+              sx={{
+                fontWeight: "700",
+                color: theme.palette.text.tertiary,
+                borderColor: theme.palette.text.tertiary,
+              }}>
               <Edit sx={{ fontSize: "1rem" }} />
               Other
             </Button>
           </ButtonGroup>
         </Box>
-        <Divider
-          sx={{ border: `.4px solid ${theme.palette.neutral.ofWhite}` }}
-        />
+        <Divider />
         <Box sx={{ padding: "1rem 1.5rem" }}>
           <Typography
             sx={{
-              color: theme.palette.neutral.black02,
+              color: theme.palette.text.secondary,
               fontWeight: "700",
               mb: "10px",
             }}>
@@ -289,8 +326,11 @@ const PostBuyerRequest = () => {
               style={{
                 border: "none",
                 height: "2.2rem",
+                background: theme.palette.background.default,
+                color: theme.palette.text.primary,
                 outline: "none",
                 paddingLeft: "10px",
+                fontFamily: "inherit",
                 width: "18rem",
               }}
             />
@@ -305,15 +345,15 @@ const PostBuyerRequest = () => {
           }}>
           <Button
             sx={{
-              background: theme.palette.secondary.main,
-              color: theme.palette.primary.main,
+              background: theme.palette.primary.main,
+              color: theme.palette.text.primary,
               fontWeight: "700",
               width: "10rem",
               padding: "8px 10px",
 
               m: "1rem",
               "&:hover": {
-                background: theme.palette.secondary.main,
+                background: theme.palette.primary.main,
               },
             }}>
             Submit Request

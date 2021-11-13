@@ -14,6 +14,7 @@ import {
   TableHead,
   TableRow,
   Button,
+  Avatar,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
@@ -60,7 +61,6 @@ function TabPanel(props) {
 const BuyerRequest = () => {
   const [value, setValue] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [rowBackground, setRowBackground] = useState("none");
   const theme = useTheme();
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -81,21 +81,37 @@ const BuyerRequest = () => {
           justifyContent: "space-between",
           m: "2rem",
         }}>
-        <Typography variant='h1' sx={{ fontSize: "2.5rem" }}>
+        <Typography
+          variant='h1'
+          sx={{ fontSize: "2.5rem", color: theme.palette.text.primary }}>
           Buyer Requests
         </Typography>
-        <Input type='text' placeholder={"search requests"} />
+        <Input
+          type='text'
+          placeholder={"search requests"}
+          sx={{ color: theme.palette.text.primary, fontFamily: "inherit" }}
+        />
       </Box>
       <Box
         sx={{ m: "0 2rem", display: "flex", justifyContent: "space-between" }}>
-        <Tabs sx={{ m: 0 }} value={value} onChange={handleChange}>
-          <Tab label={"Active"} />
-          <Tab label={"Sent Offers"} />
+        <Tabs
+          sx={{ m: 0, color: theme.palette.text.primary }}
+          value={value}
+          onChange={handleChange}>
+          <Tab
+            sx={{ m: 0, color: theme.palette.text.primary }}
+            label={"Active"}
+          />
+          <Tab
+            sx={{ m: 0, color: theme.palette.text.primary }}
+            label={"Sent Offers"}
+          />
         </Tabs>
         <span
           style={{
-            color: theme.palette.neutral.blackLight,
-            fontSize: "1rem",
+            color: theme.palette.text.tertiary,
+            fontSize: "14px",
+            fontStyle: "italic",
           }}>
           10 Offers left today
         </span>
@@ -110,7 +126,11 @@ const BuyerRequest = () => {
             p: "2rem",
             mt: "2rem",
           }}>
-          <Typography>Buyer Requests</Typography>
+          <Typography
+            variant='h3'
+            sx={{ color: theme.palette.text.secondary, fontSize: "1.1rem" }}>
+            Buyer Requests
+          </Typography>
           <MenuButton
             width={"12rem"}
             onClick={menuOpenHandle}
@@ -187,35 +207,33 @@ const BuyerRequest = () => {
                 {requests.map((req, index) => {
                   return (
                     <TableRow
-                      hover
-                      onMouseOver={(event) => console.log(event)}
-                      onMouse
-                      onClick={() => console.log(index)}
                       style={{
                         height: "8rem",
-                        background: rowBackground,
-                        "&:hover": {
-                          background: "#000",
-                        },
                       }}>
-                      <TableCell sx={{ color: theme.palette.neutral.black03 }}>
+                      <TableCell sx={{ color: theme.palette.text.secondary }}>
                         {req.date}
                       </TableCell>
-                      <TableCell sx={{ color: theme.palette.neutral.black03 }}>
-                        {req.buyer}
+                      <TableCell
+                        sx={{
+                          color: theme.palette.text.secondary,
+                        }}>
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                          <Avatar sx={{ mr: "5px" }}>{req.buyer[0]}</Avatar>
+                          {/* {req.buyer} */}
+                        </Box>
                       </TableCell>
-                      <TableCell sx={{ color: theme.palette.neutral.black03 }}>
+                      <TableCell sx={{ color: theme.palette.text.secondary }}>
                         {req.request}
                       </TableCell>
-                      <TableCell sx={{ color: theme.palette.neutral.black03 }}>
+                      <TableCell sx={{ color: theme.palette.text.secondary }}>
                         {req.offers}
                       </TableCell>
-                      <TableCell sx={{ color: theme.palette.neutral.black03 }}>
+                      <TableCell sx={{ color: theme.palette.text.secondary }}>
                         {req.duration}
                       </TableCell>
                       <TableCell
                         sx={{
-                          color: theme.palette.neutral.black03,
+                          color: theme.palette.text.secondary,
                         }}>
                         <Box>$ {req.budget}</Box>
                       </TableCell>

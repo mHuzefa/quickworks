@@ -104,7 +104,7 @@ const ManageOrders = () => {
           m: "2rem",
         }}>
         <Typography
-          sx={{ fontSize: "2.1rem", color: theme.palette.primary.main }}
+          sx={{ fontSize: "2.1rem", color: theme.palette.text.primary }}
           variant='h1'>
           Manage Orders
         </Typography>
@@ -115,13 +115,11 @@ const ManageOrders = () => {
               placeholder={"Search Orders"}
               sx={{
                 fontSize: "13px",
-                color: theme.palette.neutral.blackLight,
+                color: theme.palette.text.primary,
                 borderBottomColor: theme.palette.neutral.gray03,
               }}
             />
-            <Search
-              sx={{ fontSize: "16px", color: theme.palette.neutral.blackLight }}
-            />
+            <Search sx={{ fontSize: "16px", color: theme.palette.grey[400] }} />
           </Paper>
         </Box>
       </Box>
@@ -130,7 +128,9 @@ const ManageOrders = () => {
           {manageTabs.map((tab) => {
             return (
               <Tab
-                sx={{ color: theme.palette.neutral.gray }}
+                sx={{
+                  color: theme.palette.text.secondary,
+                }}
                 label={`${tab.tabName} ${
                   tab.orders.length !== 0 ? tab.orders.length : ""
                 }`}
@@ -148,8 +148,8 @@ const ManageOrders = () => {
                 }}>
                 <Box
                   sx={{
-                    color: theme.palette.neutral.black01,
-                    fontWeight: "700",
+                    color: theme.palette.text.secondary,
+                    fontWeight: "500",
                     fontSize: "1.2rem",
                     m: "1rem",
                     pt: "1rem",
@@ -226,7 +226,7 @@ const ManageOrders = () => {
                           <TableRow key={order.orderId}>
                             <TableCell>{<Star />}</TableCell>
                             <TableCell
-                              sx={{ color: theme.palette.neutral.black02 }}>
+                              sx={{ color: theme.palette.text.secondary }}>
                               {order.buyer}
                             </TableCell>
                             <TableCell>
@@ -239,8 +239,8 @@ const ManageOrders = () => {
                                   textTransform: "uppercase",
                                   fontSize: "10px",
                                   fontWeight: "700",
-                                  color: theme.palette.neutral.white,
-                                  background: theme.palette.primary.main,
+                                  color: theme.palette.text.secondary,
+                                  background: theme.palette.info.main,
                                 }}>
                                 {order.ordered === "custom"
                                   ? "CUSTOM ORDER"
@@ -266,10 +266,10 @@ const ManageOrders = () => {
                                   textTransform: "uppercase",
                                   fontSize: "10px",
                                   fontWeight: "700",
-                                  color: theme.palette.neutral.black01,
+                                  color: theme.palette.text.primary,
                                   background: `${
                                     order.status === "completed"
-                                      ? theme.palette.secondary.main
+                                      ? theme.palette.primary.main
                                       : theme.palette.neutral.gray01
                                   }`,
                                 }}>

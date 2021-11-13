@@ -1,12 +1,14 @@
 import Button from "@mui/material/Button";
 import React, { useContext, useEffect } from "react";
 import Header from "./components/Header/Header";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import SellerDashboard from "./screens/SellerDashboard";
 import PostBuyerRequest from "./screens/PostBuyerRequest";
 import BuyerRequest from "./screens/BuyerRequest";
 import ManageOrders from "./screens/ManageOrders";
+import ManageGigs from "./screens/Manage_Gigs";
+
 import SellerProfile from "./screens/SellerProfile";
 import { Divider, IconButton } from "@mui/material";
 import { useTheme } from "@emotion/react";
@@ -27,6 +29,13 @@ function App() {
     <Router>
       <Header />
       <Divider />
+      <Route component={HomeScreen} path='/' exact />
+      <Route component={SellerDashboard} path='/seller_dashboard' />
+      <Route component={SellerProfile} path='/users' />
+      <Route component={BuyerRequest} path='/buyer_requests' />
+      <Route component={PostBuyerRequest} path='/post/request' />
+      <Route component={ManageOrders} path='/manage_orders' />
+      <Route component={ManageGigs} path='/manage_gigs' />
       {/* {theme.palette.mode} mode
       <IconButton
         sx={{ ml: 1 }}
@@ -38,7 +47,6 @@ function App() {
           <Brightness4Icon />
         )}
       </IconButton> */}
-      <SellerDashboard />
     </Router>
   );
 }
