@@ -554,6 +554,7 @@ const ProfileGig = ({ imgUrl, gigTitle, startPrice, gigUrl }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          m: "3px 0",
           p: "0 8px",
         }}>
         <MoreHoriz
@@ -567,13 +568,16 @@ const ProfileGig = ({ imgUrl, gigTitle, startPrice, gigUrl }) => {
         />
         <span
           style={{
-            color: theme.palette.primary.main,
-            fontSize: "13px",
+            color: theme.palette.text.primary,
+            padding: "2px 8px",
+            borderRadius: "19px",
+            fontSize: "11px",
             fontWeight: "500",
+            background: theme.palette.primary.main,
           }}>
           Starting at
           <span
-            style={{ fontWeight: "700", fontSize: "18px", marginLeft: "5px" }}>
+            style={{ fontWeight: "700", fontSize: "15px", marginLeft: "5px" }}>
             {startPrice}
           </span>
         </span>

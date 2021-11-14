@@ -136,10 +136,7 @@ const getDesignTokens = (mode) => ({
             white: "#fff",
           },
           secondary: {
-            main: "#ce93d8",
-            light: "#f3e5f5",
-            dark: "#ab47bc",
-            contrastText: "rgba(0, 0, 0, 0.87)",
+            main: "#f0f0f0",
           },
           error: {
             main: "#f44336",

@@ -120,17 +120,17 @@ const DesktopHeader = ({ currencies, languages }) => {
           sx={{
             border: 1,
             borderColor: theme.palette.primary.main,
-            color: theme.palette.primary.main,
+            color: theme.palette.text.primary,
             ml: ".5rem",
             fontWeight: "700",
-            background: "none",
+            background: theme.palette.primary.main,
             "&:hover": {
               background: theme.palette.primary.main,
-              color: theme.palette.common.white,
+              boxShadow: theme.palette.shadow.shadow01,
             },
           }}
           variant='contained'
-          color='secondary'>
+          color='primary'>
           Join
         </Button>
       </Box>

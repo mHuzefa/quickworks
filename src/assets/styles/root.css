@@ -29,3 +29,7 @@ input{
 button{
     text-transform: capitalize !important;
 }
+::selection {
+    color: #FFF;
+    background: #FFDE00;
+  }

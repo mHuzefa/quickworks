@@ -15,6 +15,7 @@ import { useTheme } from "@emotion/react";
 import { ThemeChangeContext } from "./context/ThemeContext";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import Categories from "./components/categories/Categories";
 
 function App() {
   const theme = useTheme();
@@ -28,6 +29,8 @@ function App() {
   return (
     <Router>
       <Header />
+      <Divider />
+      <Categories />
       <Divider />
       <Route component={HomeScreen} path='/' exact />
       <Route component={SellerDashboard} path='/seller_dashboard' />
