@@ -1,7 +1,6 @@
 import { useTheme } from "@emotion/react";
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/images/logodesign.jpg";
 const LinkCard = ({ src, heading, subheading }) => {
   const theme = useTheme();
   return (

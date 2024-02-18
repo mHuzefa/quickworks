@@ -1,14 +1,8 @@
 import { Box } from "@mui/system";
 import {
-  Stack,
-  Typography,
-  Link as li,
   Button,
   Menu,
-  MenuItem,
-  Input,
-  InputBase,
-  Paper,
+  MenuItem
 } from "@mui/material";
 import { Language } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -49,22 +43,107 @@ const DesktopHeader = ({ currencies, languages }) => {
 
         backgroundColor: theme.palette.background,
       }}>
-      <Link
-        to='/'
+        <Box sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        margin: 0,
+        p: ".5rem 2.5rem",
+
+        backgroundColor: theme.palette.background,
+      }}>
+          <Link
+            to='/'
+            style={{
+              display: "flex",
+              alignItems: "center",
+              margin:'0 1rem',
+              textDecoration: "none",
+              color: theme.palette.text.primary,
+              fontWeight: "700",
+            }}>
+            <img
+              style={{ width: "4rem" }}
+              src={QuickworksLogo}
+              alt='Quickworks Logo'
+            />
+            QUICKWORKS
+          </Link>
+          <Link
+        to='/seller_dashboard'
         style={{
           display: "flex",
           alignItems: "center",
+          margin:'0 1rem',
           textDecoration: "none",
-          color: theme.palette.text.primary,
-          fontWeight: "700",
+          color: theme.palette.text.tertiary,
+          fontWeight: "400",
         }}>
-        <img
-          style={{ width: "4rem" }}
-          src={QuickworksLogo}
-          alt='Quickworks Logo'
-        />
-        QUICKWORKS
+        
+        Seller Dashboard
       </Link>
+      <Link
+        to='/users'
+        style={{
+          display: "flex",
+          alignItems: "center",
+          margin:'0 1rem',
+          textDecoration: "none",
+          color: theme.palette.text.tertiary,
+          fontWeight: "400",
+        }}>
+        Users
+      </Link>
+      <Link
+        to='/buyer_requests'
+        style={{
+          display: "flex",
+          margin:'0 1rem',
+          alignItems: "center",
+          textDecoration: "none",
+          color: theme.palette.text.tertiary,
+          fontWeight: "400",
+        }}>
+        Buyer Request
+      </Link>
+      <Link
+        to='/post/request'
+        style={{
+          display: "flex",
+          alignItems: "center",
+          margin:'0 1rem',
+          textDecoration: "none",
+          color: theme.palette.text.tertiary,
+          fontWeight: "400",
+        }}>
+          Post Request
+      </Link>
+      <Link
+        to='/manage_gigs'
+        style={{
+          display: "flex",
+          alignItems: "center",
+          margin:'0 1rem',
+          textDecoration: "none",
+          color: theme.palette.text.tertiary,
+          fontWeight: "400",
+        }}>
+          Manage Gigs
+      </Link>
+      <Link
+        to='/manage_orders'
+        style={{
+          display: "flex",
+          margin:'0 1rem',
+          alignItems: "center",
+          textDecoration: "none",
+          color: theme.palette.text.tertiary,
+          fontWeight: "400",
+        }}>
+          Manage Orders
+      </Link>
+        </Box>
+
       <Box sx={{ ml: "auto" }}>
         <Button
           disableRipple

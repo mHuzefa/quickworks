@@ -1,8 +1,7 @@
 import { useTheme } from "@emotion/react";
-import { ExpandMore, Search, Star } from "@mui/icons-material";
+import { ExpandMore } from "@mui/icons-material";
 import {
-  Input,
-  Paper,
+
   Typography,
   Tab,
   Tabs,

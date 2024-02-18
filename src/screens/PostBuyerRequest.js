@@ -2,16 +2,14 @@ import {
   Typography,
   TextareaAutosize,
   Paper,
-  Input,
   Button,
-  Menu,
   MenuItem,
   Divider,
   ButtonGroup,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { AttachmentOutlined, Edit, ExpandMore } from "@mui/icons-material";
+import { AttachmentOutlined, Edit } from "@mui/icons-material";
 import { useTheme } from "@emotion/react";
 import StyledMenu from "./../components/StyledMenu";
 import MenuButton from "../components/MenuButton";

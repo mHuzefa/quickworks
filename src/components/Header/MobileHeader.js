@@ -7,43 +7,19 @@ import {
   Divider,
   Drawer,
   List,
-  Menu,
-  MenuItem,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Typography,
 } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import { Link } from "react-router-dom";
 
-const MobileHeader = ({ currencies, languages }) => {
+const MobileHeader = () => {
   const [toggleDrawer, setToggleDrawer] = useState(false);
-  const [language, setLanguage] = useState("English");
-  const [currency, setCurrency] = useState(currencies[0]);
 
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [anchorElL, setAnchorElL] = useState(null);
   const theme = useTheme();
 
-  const open = Boolean(anchorEl);
-  const openL = Boolean(anchorElL);
-  const languageHandleClick = (event) => {
-    setAnchorElL(event.currentTarget);
-  };
-  const languageHandleClose = (event) => {
-    setAnchorElL(null);
-  };
-  const currencyHandleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    setToggleDrawer(true);
-  };
-  const currencyHandleClose = (event, index) => {
-    setAnchorEl(null);
-  };
   const onClickToggle = () => {
     setToggleDrawer(true);
   };

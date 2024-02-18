@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
-import Theme from "./assets/theme/Theme";
 import App from "./App";
 import "./assets/styles/root.css";
-import ThemeContext, { ThemeChangeContext } from "./context/ThemeContext";
+import ThemeContext from "./context/ThemeContext";
 
 ReactDOM.render(
   <React.StrictMode>

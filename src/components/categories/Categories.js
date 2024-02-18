@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 
 import { categories } from "../../data/categories";
-import { Divider } from "@mui/material";
 const Categories = () => {
   const theme = useTheme();
   const [display, setDisplay] = useState({

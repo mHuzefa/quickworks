@@ -1,4 +1,3 @@
-import Button from "@mui/material/Button";
 import React, { useContext, useEffect } from "react";
 import Header from "./components/Header/Header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -29,6 +28,18 @@ function App() {
   return (
     <Router>
       <Header />
+      {theme.palette.mode} mode
+      <IconButton
+        sx={{ ml: 1 }}
+        onClick={colorMode.toggleColorMode}
+        color='inherit'>
+        {theme.palette.mode === "light" ? (
+          <Brightness7Icon />
+        ) : (
+          <Brightness4Icon />
+        )}
+      </IconButton>
+
       <Divider />
       <Categories />
       <Divider />
@@ -39,17 +50,6 @@ function App() {
       <Route component={PostBuyerRequest} path='/post/request' />
       <Route component={ManageOrders} path='/manage_orders' />
       <Route component={ManageGigs} path='/manage_gigs' />
-      {/* {theme.palette.mode} mode
-      <IconButton
-        sx={{ ml: 1 }}
-        onClick={colorMode.toggleColorMode}
-        color='inherit'>
-        {theme.palette.mode === "dark" ? (
-          <Brightness7Icon />
-        ) : (
-          <Brightness4Icon />
-        )}
-      </IconButton> */}
     </Router>
   );
 }

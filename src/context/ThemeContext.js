@@ -1,7 +1,5 @@
-import React, { createContext, useCallback } from "react";
-import Box from "@mui/material/Box";
-import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
-import { amber, deepOrange, deepPurple, grey } from "@mui/material/colors";
+import React, { createContext } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import getDesignTokens from "../assets/theme/Theme";
 export const ThemeChangeContext = createContext({ toggleColorMode: () => {} });
 const ThemeContext = (props) => {

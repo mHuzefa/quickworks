@@ -5,7 +5,6 @@ import React from "react";
 import PersonWorkingImage from "../assets/images/personworking.png";
 import LogoDesign from "../assets/images/logodesign.jpg";
 import { useTheme } from "@emotion/react";
-import { Link } from "react-router-dom";
 import LinkCard from "../components/LinkCard/LinkCard";
 const HomeScreen = () => {
   const theme = useTheme();
@@ -57,7 +56,7 @@ const HomeScreen = () => {
           </Paper>
         </Box>
         <Box>
-          <img src={PersonWorkingImage} />
+          <img src={PersonWorkingImage} alt="pp" />
         </Box>
       </Box>
 
